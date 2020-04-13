@@ -1,0 +1,251 @@
+:root {
+  --background-color: #262728;
+  --box-color: #2f3031;
+  --bar-color: #2f3031;
+  --text-color: #c3c3c3;
+  --text-hover-color: #fff;
+  --accent-color: #22a1c7;
+  --accent-hover-color: #22c7bf;
+  --accent-warning-hover-color: #a53232;
+  --accent-warning-hover-color-end: #3c1a1a;
+  --border-color: #4f5050;
+  --background-hover-color: #ffffff0d;
+}
+
+body {
+  background-color: var(--background-color);
+  /*background-image: url(background.png);
+  background-size: 100vw 100vh;
+  background-attachment: fixed;*/
+  color: var(--text-color);
+  text-align: justify;
+  font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  margin: 0;
+}
+
+.right {
+  float: right;
+}
+
+div.navbar {
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  background-color: var(--bar-color);
+  border-bottom: solid var(--background-color) 1px;
+}
+
+div.navbar > span {
+  font-size: 16px;
+  padding: 0 11px;
+  line-height: 30px;
+  font-family: monospace;
+}
+
+div.navbar > span a:hover {
+  color: var(--accent-color);
+}
+
+div.footer {
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--bar-color);
+  border-top: solid var(--background-color) 1px;
+}
+
+span.copy {
+  font-size: 14px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.box {
+  border-radius: 12px;
+  background-color: var(--box-color);
+}
+
+div.content {
+  margin: 4em auto;
+  max-width: 800px;
+  padding: 1em;
+}
+
+a, a:visited {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover-color);
+  transition: color 0.2s, background-color 0.2s;
+}
+
+ul li img {
+  height: 1em
+}
+
+@media screen and (max-width:500px) {
+  body {
+    text-align: left
+  }
+
+  div.fancyPositioning div.picture-left,
+  div.fancyPositioning div.tleft {
+    float: none;
+    width: inherit
+  }
+}
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid var(--border-color);
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--background-hover-color);
+}
+
+/*
+table tr:hover {
+  background-color: var(--background-hover-color);
+}
+*/
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: var(--text-hover-color);
+}
+
+pre {
+  background-color: #212121;
+  padding: 0.3em;
+  overflow-x: auto;
+  font-size: 0.8em;
+}
+
+.button, input[type=submit], input[type=button] {
+  cursor: pointer;
+}
+
+.button, input[type=submit], input[type=button], input[type=text], input[type=email], input[type=password], button, textarea {
+  padding: 10px;
+  border: solid 1px var(--border-color);
+  margin: 6px auto;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  color: var(--text-color);
+}
+
+.button:hover {
+  background: var(--accent-color);
+  background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-hover-color) 100%);
+  color: var(--text-hover-color);
+}
+
+.button.buttonwarning:hover {
+  background: var(--accent-color);
+  background: var(--accent-warning-hover-color);
+}
+
+hr {
+  border: none;
+  border-top: solid 1px var(--border-color);
+}
+
+div.button h3 {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  width: fit-content;
+  border: solid 1px var(--border-color);
+}
+
+legend {
+  color: var(--accent-color);
+}
+
+input[type=submit], input[type=button], button {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+input[type=submit]:hover, input[type=button]:hover, button:hover {
+  background-color: var(--accent-color);
+  color: var(--text-hover-color);
+  transition: color 0.2s, background 0.2s;
+}
+
+input[type=submit].buttonwarning, input[type=button].buttonwarning, button.buttonwarning {
+  color: var(--accent-warning-hover-color);
+}
+
+input[type=submit].buttonwarning:hover, input[type=button].buttonwarning:hover, button.buttonwarning:hover {
+  background-color: var(--accent-warning-hover-color);
+  color: var(--text-hover-color);
+}
+
+input[type=text], input[type=email], input[type=password], textarea {
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: inherit;
+}
+
+p {
+  margin: 4px auto;
+}
+
+iframe#log {
+  width: 100%;
+  border: solid 1px var(--border-color);
+}
+
+span.crashtype {
+  color: #ffff5a;
+}
+
+span.crasherror {
+  color: #e85858;
+}
+
+span.crashpackage {
+  color: #5ad65a;
+}
+
+span.crashclass {
+  color: #42f9f0;
+}
+
+span.crashmethod {
+  color: #f7b63f;
+}
+
+span.crashline {
+  color: #f396f3;
+}
+
+a.profile img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
