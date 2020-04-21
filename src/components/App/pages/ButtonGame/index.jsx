@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 export const ButtonGame = () => {
-  const [counter, setCounter] = useState(localStorage.clickcount ? Number(localStorage.clickcount) : 1)
-  const [text, setText] = useState('Davai, uzspied')
+  const [counter, setCounter] = React.useState(localStorage.clickcount ? Number(localStorage.clickcount) : 1)
+  const [text, setText] = React.useState('Davai, uzspied')
 
   const t = [
     'Malacis! Tā tik turpināt!',
@@ -14,7 +14,7 @@ export const ButtonGame = () => {
 
   console.log(t)
 
-  useEffect(() => {
+  React.useEffect(() => {
     console.log(counter)
     console.log(text)
     localStorage.clickcount = counter
