@@ -1,5 +1,6 @@
-export function fetchAPI(url, method, body) {
+export function api(url, method, body) {
   const h = {
+    'MCMC-API': '1',
     'Content-Type': 'application/json'
   }
 
@@ -8,8 +9,12 @@ export function fetchAPI(url, method, body) {
   }
 
   const p = {
-    method: method,
+    method: 'get',
     headers: new Headers(h)
+  }
+
+  if (method) {
+    p.method = method
   }
 
   if (body) {

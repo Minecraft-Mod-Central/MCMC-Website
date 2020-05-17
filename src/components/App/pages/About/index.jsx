@@ -4,11 +4,8 @@ import { Button } from '../../../ui/Button'
 export const About = () => {
   return (
     <>
-      <h1>About Minecraft Mod Central</h1>
-      <p>This website was made by <a href='https://latvian.dev/'>LatvianModder</a> and it's aimed at people who create content for modded Minecraft. It collects statistics data, lets you build and publish mods and has tools for generating data like Forge update json files.</p>
-      <p>That's all you need to know for now.</p>
-      <br />
-      <p>Disclaimer: This project is not related to Mojang or Microsoft.</p>
+      <h1>About MCMC</h1>
+      <p>This website was made by <a href='https://latvian.dev/'>LatvianModder</a> and it's aimed at people who create content for modded Minecraft. It collects analytics data, lets you build and publish mods and has tools for generating data like Forge update json files (well, ok, those last two are WIP).</p>
       <br />
       <Button to='/about/stats'>What data gets collected?</Button>
       <Button to='/privacy'>Privacy Policy</Button>

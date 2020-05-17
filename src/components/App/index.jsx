@@ -10,11 +10,12 @@ import { ButtonGame } from './pages/ButtonGame'
 import { Terms } from './pages/Terms'
 import { Privacy } from './pages/Privacy'
 import { Settings } from './pages/Settings'
+import { ClientCrash } from './pages/ClientCrash'
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <nav>
+      <nav className='navbar'>
         <Link to='/'>Home</Link>
         <a> | </a>
         <Link to='/about'>About</Link>
@@ -32,6 +33,7 @@ export const App = () => {
           <Route path='/privacy'><Privacy /></Route>
           <Route path='/settings'><Settings /></Route>
           <Route path='/button-game'><ButtonGame /></Route>
+          <Route path='/crashes/client/:crash'><ClientCrash /></Route>
           <Route path='/'><Home /></Route>
         </Switch>
       </div>

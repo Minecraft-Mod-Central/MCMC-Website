@@ -249,3 +249,79 @@ a.profile img {
   right: 6px;
   top: 6px;
 }
+
+nav.navbar {
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+}
+
+div.api {
+  border: 1px solid var(--border-color);
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+div.api span.path {
+  background-color: var(--background-color);
+  padding: 0.2em;
+}
+
+div.api span.method_get {
+  color: lightgreen;
+}
+
+div.api span.method_post {
+  color: #ffc800;
+}
+
+div.api span.method_delete {
+  color: red;
+}
+
+div.api span.method_put {
+  color: #ff6a00;
+}
+
+div.api span.auth_none {
+  color: lightblue;
+}
+
+div.api span.auth_logged_in {
+  color: cyan;
+}
+
+div.api span.auth_mod {
+  color: lightgreen;
+}
+
+div.api span.auth_verified {
+  color: #ffc800;
+}
+
+div.api span.auth_approved {
+  color: #ff6a00;
+}
+
+div.api span.auth {
+  color: lightgreen;
+}
+
+div.api span.cache {
+  color: lightgreen;
+}
+
+div.crash {
+  text-align: left;
+  font-family: monospace, monospace;
+  background-color: #212121;
+  padding: 0.7em;
+  overflow-wrap: break-word;
+  font-size: 0.8em;
+}
+
+div.crash p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2em;
+}

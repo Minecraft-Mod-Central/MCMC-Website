@@ -1,6 +1,16 @@
 import React from 'react'
 import { Button } from '../../../ui/Button'
-import { fetchAPI } from '../../../../utils/Utils'
+import { api } from '../../../../utils/Utils'
+
+const authNames = {
+  'none': 'None',
+  'mod': 'Mod',
+  'logged_in': 'Logged In',
+  'verified': 'Verified',
+  'approved': 'Approved',
+  'admin': 'Admin',
+  'superadmin': 'Superadmin'
+}
 
 export const AboutAPI = () => {
   const [error, setError] = React.useState(null)
@@ -8,7 +18,7 @@ export const AboutAPI = () => {
   const [endpoints, setEndpoints] = React.useState([])
 
   React.useEffect(() => {
-    fetchAPI('', 'get')
+    api('')
       .then(
         result => {
           setIsLoaded(true)
@@ -48,29 +58,17 @@ export const AboutAPI = () => {
     <>
       <h1>API</h1>
       <h3>All API endpoints:</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Path</th>
-            <th>Auth Level</th>
-            <th>CORS</th>
-            <th>Cache</th>
-          </tr>
-        </thead>
-        <tbody>
-          {endpoints.map(item => (
-            <tr key={item.method + ':' + item.path}>
-              <td>{item.method.toUpperCase()}</td>
-              <td>{item.path} <code title={item.description}>🛈</code></td>
-              <td>{item.auth_level}</td>
-              <td>{item.cors ? 'Yes' : 'No'}</td>
-              <td>{item.cache === 0 ? 'no-cache' : item.cache > 0 ? ('public ' + item.cache + 's') : ('private ' + (-item.cache) + 's')}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <br />
+      <div>
+        {endpoints.map(item => (
+          <div className='api' key={item.method + ':' + item.path}>
+            <p><code><span className={'method_' + item.method}>{item.method.toUpperCase()}</span> <span className='path'>{'/' + item.path}</span></code></p>
+            <p>Auth: <span className={'auth_' + item.auth_level}>{authNames[item.auth_level]}</span></p>
+            <p>Cache: <span className='cache'>{item.cache === 0 ? 'None' : item.cache > 0 ? ('public ' + item.cache + 's') : ('private ' + (-item.cache) + 's')}</span></p>
+            <br />
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
       <Button to='/about'>About</Button>
     </>
   )
