@@ -19,7 +19,7 @@ body {
   background-attachment: fixed;*/
   color: var(--text-color);
   text-align: justify;
-  font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 18px;
@@ -39,14 +39,14 @@ div.navbar {
   border-bottom: solid var(--background-color) 1px;
 }
 
-div.navbar > span {
+div.navbar>span {
   font-size: 16px;
   padding: 0 11px;
   line-height: 30px;
   font-family: monospace;
 }
 
-div.navbar > span a:hover {
+div.navbar>span a:hover {
   color: var(--accent-color);
 }
 
@@ -78,7 +78,8 @@ div.content {
   padding: 1em;
 }
 
-a, a:visited {
+a,
+a:visited {
   color: var(--accent-color);
   text-decoration: none;
 }
@@ -110,7 +111,8 @@ table {
   width: 100%;
 }
 
-table td, table th {
+table td,
+table th {
   border: 1px solid var(--border-color);
   padding: 8px;
 }
@@ -139,11 +141,20 @@ pre {
   font-size: 0.8em;
 }
 
-.button, input[type=submit], input[type=button] {
+.button,
+input[type=submit],
+input[type=button] {
   cursor: pointer;
 }
 
-.button, input[type=submit], input[type=button], input[type=text], input[type=email], input[type=password], button, textarea {
+.button,
+input[type=submit],
+input[type=button],
+input[type=text],
+input[type=email],
+input[type=password],
+button,
+textarea {
   padding: 10px;
   border: solid 1px var(--border-color);
   margin: 6px auto;
@@ -182,27 +193,38 @@ legend {
   color: var(--accent-color);
 }
 
-input[type=submit], input[type=button], button {
+input[type=submit],
+input[type=button],
+button {
   background-color: transparent;
   color: var(--accent-color);
 }
 
-input[type=submit]:hover, input[type=button]:hover, button:hover {
+input[type=submit]:hover,
+input[type=button]:hover,
+button:hover {
   background-color: var(--accent-color);
   color: var(--text-hover-color);
   transition: color 0.2s, background 0.2s;
 }
 
-input[type=submit].buttonwarning, input[type=button].buttonwarning, button.buttonwarning {
+input[type=submit].buttonwarning,
+input[type=button].buttonwarning,
+button.buttonwarning {
   color: var(--accent-warning-hover-color);
 }
 
-input[type=submit].buttonwarning:hover, input[type=button].buttonwarning:hover, button.buttonwarning:hover {
+input[type=submit].buttonwarning:hover,
+input[type=button].buttonwarning:hover,
+button.buttonwarning:hover {
   background-color: var(--accent-warning-hover-color);
   color: var(--text-hover-color);
 }
 
-input[type=text], input[type=email], input[type=password], textarea {
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
   background-color: transparent;
   color: var(--text-color);
   font-family: inherit;
@@ -323,5 +345,20 @@ div.crash {
 div.crash p {
   margin: 0;
   padding: 0;
-  line-height: 1.2em;
+  line-height: 1.2;
+}
+
+table.crash {
+  font-family: monospace, monospace;
+  font-size: 0.8em;
+}
+
+code {
+  font-family: monospace, monospace;
+}
+
+table.td {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
 }

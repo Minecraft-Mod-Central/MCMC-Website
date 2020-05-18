@@ -7,19 +7,42 @@ export const ClientCrash = () => {
   const [error, setError] = React.useState(null)
   const [isLoaded, setIsLoaded] = React.useState(false)
   const [crashInfo, setCrashInfo] = React.useState({})
-  const [stack, setStack] = React.useState([])
 
   React.useEffect(() => {
     api(`/stats/client/crashes/${crash}`)
       .then(
         result => {
-          setIsLoaded(true)
           setCrashInfo(result)
-          setStack(result.stack)
+
+          result.mods.sort((a, b) => {
+            const idA = a.id.toLowerCase()
+            const idB = b.id.toLowerCase()
+
+            if (idA > idB) {
+              return 1
+            } else if (idA < idB) {
+              return -1
+            }
+            return 0
+          })
+
+          result.coremods.sort((a, b) => {
+            const idA = a.name.toLowerCase()
+            const idB = b.name.toLowerCase()
+
+            if (idA > idB) {
+              return 1
+            } else if (idA < idB) {
+              return -1
+            }
+            return 0
+          })
+
+          setIsLoaded(true)
         },
         error => {
-          setIsLoaded(true)
           setError(error)
+          setIsLoaded(true)
         }
       )
   }, [])
@@ -31,8 +54,7 @@ export const ClientCrash = () => {
         <p>Error loading API: {error.message}</p>
       </>
     )
-  }
-  else if (!isLoaded) {
+  } else if (!isLoaded) {
     return (
       <>
         <h1>Client Crash</h1>
@@ -46,32 +68,55 @@ export const ClientCrash = () => {
       <h1>Client Crash</h1>
       <p>Reported on: <time dateTime={crashInfo.created}>{new Date(crashInfo.created).toLocaleString()}</time></p>
       <p>Similar reports to this: {crashInfo.similar}</p>
+      {crashInfo.original_error !== '' && <p>Similar to: <a href={'https://mcmc.dev/crashes/client/' + crashInfo.original_error}>{crashInfo.original_error}</a></p>}
+
       <h2>{crashInfo.modpack_name + ' ' + crashInfo.version_name}</h2>
       <div className='crash'>
         <p><span className='crashtype'>{crashInfo.type + ': '}</span><span className='crasherror'>{crashInfo.error}</span></p>
         <br />
         {
-          stack.map(item => {
-            const i = item.indexOf('(')
-            const p = item.substring(0, i)
-            const f = item.substring(i + 1)
-            const s = p.split('.')
-            const m = s.pop()
-            const c = s.pop()
-            let e
-
-            if (f.indexOf(':') !== -1) {
-              e = ':' + f.substring(f.indexOf(':') + 1, f.length - 1)
-            } else if (f === 'Native Method)') {
-              e = ':native'
-            } else {
-              e = ':?'
-            }
-
-            return (<p key={item}>at <span className='crashpackage'>{s.join('.')}</span>.<span className='crashclass'>{c}</span>.<span className='crashmethod'>{m}</span><span className='crashline'>{e}</span></p>)
+          crashInfo.stack.map(item => {
+            return (<p key={item.package + item.class + item.method + item.line}><span className='crashpackage'>{item.package}</span>.<span className='crashclass'>{item.class}</span>.<span className='crashmethod'>{item.method}</span><span className='crashline'>:{item.line === 0 ? '?' : item.line === -1 ? 'native' : item.line}</span></p>)
           })
         }
       </div>
+      <h3>Mod list</h3>
+      <table className='crash'>
+        <thead>
+          <tr>
+            <th>Mod</th>
+            <th>Version</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            crashInfo.mods.map(mod => {
+              return (<tr key={mod.id}><td><span className='crashpackage'>{mod.id}</span></td><td><span className='crashclass'>{mod.version}</span></td></tr>)
+            })
+          }
+        </tbody>
+      </table>
+      <h3>Coremod list</h3>
+      <table className='crash'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>File</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            crashInfo.coremods.map(coremod => {
+              return (<tr key={coremod.name + coremod.type + coremod.file}><td><span className='crashpackage'>{coremod.name}</span></td><td><span className='crashclass'>{coremod.type}</span></td><td><span className='crashmethod'>{coremod.file.substring(1)}</span></td></tr>)
+            })
+          }
+        </tbody>
+      </table>
+      <br />
+      <p>Mod checksum: <code>{crashInfo.mods_checksum}</code></p>
+      <p>Error checksum: <code>{crashInfo.error_checksum}</code></p>
+      <p>View as <a href={`/api/stats/client/crashes/${crash}`}>json</a></p>
     </>
   )
 }
