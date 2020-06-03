@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../../ui/Button'
+import { Button } from 'src/components/ui/button'
 
 export const AboutStats = () => {
   return (

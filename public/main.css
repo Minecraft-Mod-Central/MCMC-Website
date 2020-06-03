@@ -74,7 +74,7 @@ div.box {
 
 div.content {
   margin: 4em auto;
-  max-width: 800px;
+  width: 800px;
   padding: 1em;
 }
 
@@ -348,17 +348,12 @@ div.crash p {
   line-height: 1.2;
 }
 
-table.crash {
-  font-family: monospace, monospace;
-  font-size: 0.8em;
-}
-
 code {
   font-family: monospace, monospace;
 }
 
-table.td {
-  margin: 0;
-  padding: 0;
-  line-height: 1.2;
+table.crash td, table.crash th {
+  font-size: 0.8em;
+  padding: 0.1em 0.3em;
+  font-family: monospace, monospace;
 }

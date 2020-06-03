@@ -1,24 +1,29 @@
 import React from 'react'
-import { Button } from '../../../ui/Button'
-import { api } from '../../../../utils/Utils'
+import { Button } from 'src/components/ui/button'
+import { apiEndpoints } from 'src/utils'
+import { APIEndpoint } from 'src/types/api-callbacks'
 
-const authNames = {
-  'none': 'None',
-  'mod': 'Mod',
-  'logged_in': 'Logged In',
-  'verified': 'Verified',
-  'approved': 'Approved',
-  'admin': 'Admin',
-  'superadmin': 'Superadmin'
+type tAuthNames = {
+  [key: string]: string
+}
+
+const authNames: tAuthNames = {
+  none: 'None',
+  mod: 'Mod',
+  logged_in: 'Logged In',
+  verified: 'Verified',
+  approved: 'Approved',
+  admin: 'Admin',
+  superadmin: 'Superadmin'
 }
 
 export const AboutAPI = () => {
-  const [error, setError] = React.useState(null)
-  const [isLoaded, setIsLoaded] = React.useState(false)
-  const [endpoints, setEndpoints] = React.useState([])
+  const [error, setError] = React.useState<any>(null)
+  const [isLoaded, setIsLoaded] = React.useState<boolean>(false)
+  const [endpoints, setEndpoints] = React.useState<Array<APIEndpoint>>([])
 
   React.useEffect(() => {
-    api('')
+    apiEndpoints()
       .then(
         result => {
           setIsLoaded(true)
@@ -59,7 +64,7 @@ export const AboutAPI = () => {
       <h1>API</h1>
       <h3>All API endpoints:</h3>
       <div>
-        {endpoints.map(item => (
+        {endpoints.map((item: APIEndpoint) => (
           <div className='api' key={item.method + ':' + item.path}>
             <p><code><span className={'method_' + item.method}>{item.method.toUpperCase()}</span> <span className='path'>{'/' + item.path}</span></code></p>
             <p>Auth: <span className={'auth_' + item.auth_level}>{authNames[item.auth_level]}</span></p>

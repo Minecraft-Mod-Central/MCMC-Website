@@ -1,0 +1,45 @@
+{
+    "extends": [
+        "tslint-plugin-prettier",
+        "tslint-config-prettier",
+        "tslint-config-airbnb"
+    ],
+    "rules": {
+        "prettier": true,
+        "curly": true,
+        "import-name": false,
+        "semicolon": [
+            true,
+            "never"
+        ],
+        "max-line-length": [
+            true,
+            100
+        ],
+        "no-implicit-dependencies": false,
+        "no-submodule-imports": false,
+        "no-namespace": false,
+        "no-console": false,
+        "no-var-requires": false,
+        "align": [
+            false,
+            "parameters"
+        ]
+    },
+    "jsRules": {
+        "curly": true
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "build",
+            "config",
+            "node_modules",
+            "scripts",
+            "acceptance-tests",
+            "webpack",
+            "jest",
+            "src/setupTests.ts"
+        ]
+    }
+}

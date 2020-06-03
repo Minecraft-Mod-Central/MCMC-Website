@@ -1,15 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { api } from '../../../../utils/Utils'
+import { apiClientCrash } from 'src/utils'
+import { APIClientCrash } from 'src/types'
 
 export const ClientCrash = () => {
   const { crash } = useParams()
-  const [error, setError] = React.useState(null)
-  const [isLoaded, setIsLoaded] = React.useState(false)
-  const [crashInfo, setCrashInfo] = React.useState({})
+  const [error, setError] = React.useState<any>(null)
+  const [isLoaded, setIsLoaded] = React.useState<boolean>(false)
+  const [crashInfo, setCrashInfo] = React.useState<null | APIClientCrash>(null)
 
   React.useEffect(() => {
-    api(`/stats/client/crashes/${crash}`)
+    apiClientCrash(crash)
       .then(
         result => {
           setCrashInfo(result)
@@ -54,7 +55,7 @@ export const ClientCrash = () => {
         <p>Error loading API: {error.message}</p>
       </>
     )
-  } else if (!isLoaded) {
+  } else if (!isLoaded || !crashInfo) {
     return (
       <>
         <h1>Client Crash</h1>
@@ -68,7 +69,7 @@ export const ClientCrash = () => {
       <h1>Client Crash</h1>
       <p>Reported on: <time dateTime={crashInfo.created}>{new Date(crashInfo.created).toLocaleString()}</time></p>
       <p>Similar reports to this: {crashInfo.similar}</p>
-      {crashInfo.original_error !== '' && <p>Similar to: <a href={'https://mcmc.dev/crashes/client/' + crashInfo.original_error}>{crashInfo.original_error}</a></p>}
+      {crashInfo.original_error !== '' && <p>Original report: <a href={'https://mcmc.dev/crashes/client/' + crashInfo.original_error}>{crashInfo.original_error}</a></p>}
 
       <h2>{crashInfo.modpack_name + ' ' + crashInfo.version_name}</h2>
       <div className='crash'>

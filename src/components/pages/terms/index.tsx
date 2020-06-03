@@ -84,7 +84,7 @@ export const Terms = () => {
           </ol>
         </li>
       </ol>
-      <ol start='2'>
+      <ol start={2}>
         <li>
           These organizations may link to our home page, to publications or to
           other Web site information so long as the link: (a) is not in any way
