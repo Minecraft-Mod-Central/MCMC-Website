@@ -11,6 +11,7 @@ import { Terms } from 'src/components/pages/terms'
 import { Privacy } from 'src/components/pages/privacy'
 import { Settings } from 'src/components/pages/settings'
 import { ClientCrash } from 'src/components/pages/client-crash'
+import { GlobalStats } from 'src/components/pages/global-stats'
 
 export const App = () => {
   return (
@@ -33,6 +34,7 @@ export const App = () => {
           <Route path='/privacy'><Privacy /></Route>
           <Route path='/settings'><Settings /></Route>
           <Route path='/button-game'><ButtonGame /></Route>
+          <Route path='/global-stats'><GlobalStats /></Route>
           <Route path='/crashes/client/:crash'><ClientCrash /></Route>
           <Route path='/'><Home /></Route>
         </Switch>

@@ -13,7 +13,7 @@ export const Home = () => {
     <>
       <h1>Website is currently being rewritten, so it may not work properly!</h1>
       <hr />
-      <Button to='/stats'>Stats</Button>
+      <Button to='/global-stats'>Global Stats</Button>
       <Button to='/projects'>Projects</Button>
       {/* <Button to='/settings'>Settings</Button> */}
       <Button to='/about'>About</Button>

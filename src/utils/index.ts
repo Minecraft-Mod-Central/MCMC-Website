@@ -1,4 +1,4 @@
-import { APIEndpoint, APIClientCrash } from 'src/types/api-callbacks'
+import { APIEndpoint, APIClientCrash, APIGlobalStats } from 'src/types/api-callbacks'
 
 function api(url: string, method?: string, body?: string): Promise<any> {
   const headers = new Headers()
@@ -31,4 +31,8 @@ export function apiEndpoints(): Promise<Array<APIEndpoint>> {
 
 export function apiClientCrash(crash: string): Promise<APIClientCrash> {
   return api(`/stats/client/crashes/${crash}`)
+}
+
+export function apiGlobalStats(): Promise<APIGlobalStats> {
+  return api('/stats')
 }

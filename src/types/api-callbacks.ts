@@ -1,3 +1,5 @@
+// API
+
 export interface APIEndpoint {
     method: string,
     path: string,
@@ -5,6 +7,8 @@ export interface APIEndpoint {
     cache: number,
     description: string,
 }
+
+// Crash
 
 export interface APIClientCrash {
     created: string,
@@ -41,4 +45,36 @@ export interface APICrashCoremod {
     type: string,
     file: string,
     changed: number,
+}
+
+// Global Stats
+
+export interface APIGlobalStats {
+    launches: number,
+    total_time: number,
+    world_joins: number,
+    ticks: number,
+    frames: number,
+    multiplayer: number,
+    lan: number,
+    hardcore: number,
+    creative_ticks: number,
+    ext_caps: Array<APIStatCapability>,
+    arb_caps: Array<APIStatCapability>,
+    client_crashes: number,
+    server_crashes: number,
+    database: APIStatDatabase
+}
+
+export interface APIStatCapability {
+    id: string,
+    time: number,
+}
+
+export interface APIStatDatabase {
+    users: number,
+    modpacks: number,
+    modpack_versions: number,
+    mods: number,
+    mod_versions: number,
 }
